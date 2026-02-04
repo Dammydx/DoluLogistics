@@ -164,12 +164,12 @@ const TrackingDetails = ({ parcel }: TrackingDetailsProps) => {
                   )}
                 </div>
                 
-                <div className="bg-white p-2 rounded">
+                {/* <div className="bg-white p-2 rounded">
                   <QRCode 
                     value={`https://dammydx.github.io/DoluLogistics/track?id=${parcel.tracking_id}`} 
                     size={90} 
                   />
-                </div>
+                </div> */}
               </div>
             </div>
           </motion.div>

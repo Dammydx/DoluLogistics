@@ -83,7 +83,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold">Our Location</h3>
-                      <p className="text-gray-600">9b, Ada George, Opposite Fathers House, Port Harcourt, Rivers State, Nigeria</p>
+                      <p className="text-gray-600">19b, Ada George Road, Opposite Fathers House, Port Harcourt, Rivers State, Nigeria</p>
                     </div>
                   </div>
 

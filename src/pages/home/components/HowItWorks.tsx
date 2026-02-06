@@ -73,7 +73,7 @@ const HowItWorks = () => {
 
               {/* Connector line */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gray-200"></div>
+                <div className="hidden lg:block absolute top-1/2 -right-8 w-8 h-0.5 bg-gray-200"></div>
               )}
             </motion.div>
           ))}

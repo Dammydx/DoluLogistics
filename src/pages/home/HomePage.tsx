@@ -33,7 +33,7 @@ const HomePage = () => {
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              to="/contact"
+              to="/request-pickup"
               className="px-8 py-3 bg-white text-primary-600 rounded-md font-medium hover:bg-gray-100 transition-colors"
             >
               Book a Pickup

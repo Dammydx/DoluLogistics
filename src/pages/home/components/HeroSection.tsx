@@ -71,7 +71,7 @@ const HeroSection = () => {
               className="inline-block px-3 py-1 bg-primary-100 text-primary-600 rounded-full text-sm font-medium mb-6"
               variants={itemVariants}
             >
-              Stress free delivery you can trust
+              Your one stop solution to delivery problems.
             </motion.span>
 
             <motion.h1

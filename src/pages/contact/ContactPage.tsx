@@ -83,7 +83,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold">Our Location</h3>
-                      <p className="text-gray-600">Rivers, Nigeria</p>
+                      <p className="text-gray-600">9b, Ada George, Opposite Fathers House, Port Harcourt, Rivers State, Nigeria</p>
                     </div>
                   </div>
 
@@ -93,10 +93,10 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold">Phone</h3>
-                      <p className="text-gray-600">+234 814 631 4677</p>
+                      <p className="text-gray-600">+234 913 027 8580</p>
 
                       <h3 className="font-semibold mt-3">WhatsApp</h3>
-                      <p className="text-gray-600">+234 817 245 2411</p>
+                      <p className="text-gray-600">+234 913 027 8580</p>
                     </div>
                   </div>
 
@@ -106,7 +106,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold">Email</h3>
-                      <p className="text-gray-600">dammytechhub@gmail.com</p>
+                      <p className="text-gray-600">dolulogistics@gmail.com</p>
                     </div>
                   </div>
 
@@ -116,8 +116,8 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold">Business Hours</h3>
-                      <p className="text-gray-600">Monday to Friday: 8:00 AM - 6:00 PM</p>
-                      <p className="text-gray-600">Saturday: 9:00 AM - 3:00 PM</p>
+                      <p className="text-gray-600">Monday to Friday: 8:30 AM - 5:00 PM</p>
+                      <p className="text-gray-600">Saturday: 9:00 AM - 5:00 PM</p>
                       <p className="text-gray-600">Sunday: Closed</p>
                     </div>
                   </div>
@@ -137,7 +137,7 @@ const ContactPage = () => {
                     </svg>
                   </a>
 
-                  <a
+                  {/* <a
                     href="#"
                     className="bg-gray-200 hover:bg-primary-500 hover:text-white transition-colors p-3 rounded-full"
                     aria-label="Twitter"
@@ -145,7 +145,7 @@ const ContactPage = () => {
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.034 10.034 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                     </svg>
-                  </a>
+                  </a> */}
 
                   <a
                     href="#"
@@ -157,8 +157,8 @@ const ContactPage = () => {
                     </svg>
                   </a>
 
-                  <a
-                    href="https://www.linkedin.com/in/daramola-irewole-3794792a4"
+                  {/* <a
+                    href="#"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-gray-200 hover:bg-primary-500 hover:text-white transition-colors p-3 rounded-full"
@@ -167,7 +167,7 @@ const ContactPage = () => {
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                     </svg>
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </motion.div>

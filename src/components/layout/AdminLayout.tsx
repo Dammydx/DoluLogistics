@@ -1,6 +1,14 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Clipboard, Package, MessageCircle, Menu, X, LogOut, FileText } from 'lucide-react';
+import {
+  Clipboard,
+  Package,
+  MessageCircle,
+  Menu,
+  X,
+  LogOut,
+  FileText,
+} from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -11,7 +19,6 @@ const AdminLayout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is authenticated
     const adminAuth = sessionStorage.getItem('adminAuth');
     if (!adminAuth) {
       navigate('/admin');
@@ -25,77 +32,64 @@ const AdminLayout = () => {
     navigate('/admin');
   };
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  if (!isAuthenticated) {
-    return null; // Will redirect in useEffect
-  }
+  if (!isAuthenticated) return null;
 
   return (
-    <div className="flex h-screen bg-gray-100">
-      {/* Sidebar for desktop */}
+    <div className="flex h-screen bg-blue-50">
+      {/* Sidebar */}
       <AnimatePresence>
         {isSidebarOpen && (
           <motion.aside
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: 250, opacity: 1 }}
+            animate={{ width: 260, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="hidden md:block bg-text text-white w-64 flex-shrink-0 z-10"
+            transition={{ duration: 0.25 }}
+            className="hidden md:block bg-blue-950 text-white w-[260px] flex-shrink-0 z-10"
           >
-            <div className="p-4 flex items-center justify-between">
-              <Link to="/admin/dashboard" className="flex items-center space-x-2">
-                <Package className="h-6 w-6 text-primary-500" />
-                <span className="text-lg font-semibold">Dolu Logistics Admin</span>
-              </Link>
+            <div className="p-5 flex items-center space-x-3 border-b border-blue-900">
+              <Package className="h-7 w-7 text-lime-400" />
+              <span className="text-lg font-semibold tracking-wide">
+                Dolu Admin
+              </span>
             </div>
 
-            <nav className="mt-8">
-              <NavLink
-                to="/admin/dashboard"
-                className={({ isActive }) =>
-                  `flex items-center space-x-3 px-4 py-3 ${
-                    isActive ? 'bg-gray-800 text-primary-500' : 'text-gray-300 hover:bg-gray-800'
-                  }`
-                }
-              >
-                <Clipboard className="h-5 w-5" />
-                <span>Manage Parcels</span>
-              </NavLink>
-
-              <NavLink
-                to="/admin/dashboard/requests"
-                className={({ isActive }) =>
-                  `flex items-center space-x-3 px-4 py-3 ${
-                    isActive ? 'bg-gray-800 text-primary-500' : 'text-gray-300 hover:bg-gray-800'
-                  }`
-                }
-              >
-                <FileText className="h-5 w-5" />
-                <span>Pickup Requests</span>
-              </NavLink>
-
-              <NavLink
-                to="/admin/dashboard/messages"
-                className={({ isActive }) =>
-                  `flex items-center space-x-3 px-4 py-3 ${
-                    isActive ? 'bg-gray-800 text-primary-500' : 'text-gray-300 hover:bg-gray-800'
-                  }`
-                }
-              >
-                <MessageCircle className="h-5 w-5" />
-                <span>Customer Messages</span>
-              </NavLink>
+            <nav className="mt-6">
+              {[
+                {
+                  to: '/admin/dashboard',
+                  icon: Clipboard,
+                  label: 'Manage Parcels',
+                },
+                {
+                  to: '/admin/dashboard/requests',
+                  icon: FileText,
+                  label: 'Pickup Requests',
+                },
+                {
+                  to: '/admin/dashboard/messages',
+                  icon: MessageCircle,
+                  label: 'Customer Messages',
+                },
+              ].map(({ to, icon: Icon, label }) => (
+                <NavLink
+                  key={to}
+                  to={to}
+                  className={({ isActive }) =>
+                    `flex items-center space-x-3 px-5 py-3 transition-colors ${
+                      isActive
+                        ? 'bg-blue-900 text-lime-400'
+                        : 'text-blue-200 hover:bg-blue-900 hover:text-white'
+                    }`
+                  }
+                >
+                  <Icon className="h-5 w-5" />
+                  <span>{label}</span>
+                </NavLink>
+              ))}
 
               <button
                 onClick={handleLogout}
-                className="w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-gray-800 text-left"
+                className="w-full flex items-center space-x-3 px-5 py-3 mt-4 text-blue-200 hover:bg-red-600 hover:text-white transition-colors"
               >
                 <LogOut className="h-5 w-5" />
                 <span>Logout</span>
@@ -105,21 +99,33 @@ const AdminLayout = () => {
         )}
       </AnimatePresence>
 
-      {/* Main content */}
+      {/* Main Area */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="bg-white shadow-sm z-10">
+        <header className="bg-white border-b border-blue-100 z-10">
           <div className="p-4 flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <button onClick={toggleSidebar} className="hidden md:block text-text focus:outline-none">
+              <button
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                className="hidden md:block text-blue-900"
+              >
                 <Menu className="h-6 w-6" />
               </button>
 
-              <button onClick={toggleMobileMenu} className="md:hidden text-text focus:outline-none">
-                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden text-blue-900"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </button>
 
-              <h1 className="text-xl font-semibold text-text">Dashboard</h1>
+              <h1 className="text-xl font-semibold text-blue-900">
+                Dashboard
+              </h1>
             </div>
 
             <button
@@ -130,62 +136,54 @@ const AdminLayout = () => {
             </button>
           </div>
 
-          {/* Mobile navigation */}
+          {/* Mobile Menu */}
           <AnimatePresence>
             {isMobileMenuOpen && (
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="md:hidden bg-text text-white overflow-hidden"
+                transition={{ duration: 0.25 }}
+                className="md:hidden bg-blue-950 text-white"
               >
-                <nav className="p-4 flex flex-col space-y-2">
-                  <NavLink
-                    to="/admin/dashboard"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={({ isActive }) =>
-                      `flex items-center space-x-3 px-4 py-3 rounded-md ${
-                        isActive ? 'bg-gray-800 text-primary-500' : 'text-gray-300 hover:bg-gray-800'
-                      }`
-                    }
-                  >
-                    <Clipboard className="h-5 w-5" />
-                    <span>Manage Parcels</span>
-                  </NavLink>
-
-                  <NavLink
-                    to="/admin/dashboard/requests"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={({ isActive }) =>
-                      `flex items-center space-x-3 px-4 py-3 rounded-md ${
-                        isActive ? 'bg-gray-800 text-primary-500' : 'text-gray-300 hover:bg-gray-800'
-                      }`
-                    }
-                  >
-                    <FileText className="h-5 w-5" />
-                    <span>Pickup Requests</span>
-                  </NavLink>
-
-                  <NavLink
-                    to="/admin/dashboard/messages"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={({ isActive }) =>
-                      `flex items-center space-x-3 px-4 py-3 rounded-md ${
-                        isActive ? 'bg-gray-800 text-primary-500' : 'text-gray-300 hover:bg-gray-800'
-                      }`
-                    }
-                  >
-                    <MessageCircle className="h-5 w-5" />
-                    <span>Customer Messages</span>
-                  </NavLink>
+                <nav className="p-4 space-y-2">
+                  {[
+                    {
+                      to: '/admin/dashboard',
+                      icon: Clipboard,
+                      label: 'Manage Parcels',
+                    },
+                    {
+                      to: '/admin/dashboard/requests',
+                      icon: FileText,
+                      label: 'Pickup Requests',
+                    },
+                    {
+                      to: '/admin/dashboard/messages',
+                      icon: MessageCircle,
+                      label: 'Customer Messages',
+                    },
+                  ].map(({ to, icon: Icon, label }) => (
+                    <NavLink
+                      key={to}
+                      to={to}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={({ isActive }) =>
+                        `flex items-center space-x-3 px-4 py-3 rounded ${
+                          isActive
+                            ? 'bg-blue-900 text-lime-400'
+                            : 'text-blue-200 hover:bg-blue-900'
+                        }`
+                      }
+                    >
+                      <Icon className="h-5 w-5" />
+                      <span>{label}</span>
+                    </NavLink>
+                  ))}
 
                   <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      handleLogout();
-                    }}
-                    className="flex items-center space-x-3 px-4 py-3 rounded-md text-gray-300 hover:bg-gray-800 text-left"
+                    onClick={handleLogout}
+                    className="flex items-center space-x-3 px-4 py-3 rounded text-blue-200 hover:bg-red-600 hover:text-white"
                   >
                     <LogOut className="h-5 w-5" />
                     <span>Logout</span>
@@ -196,7 +194,7 @@ const AdminLayout = () => {
           </AnimatePresence>
         </header>
 
-        {/* Main content */}
+        {/* Content */}
         <main className="flex-1 overflow-y-auto p-4">
           <Outlet />
         </main>

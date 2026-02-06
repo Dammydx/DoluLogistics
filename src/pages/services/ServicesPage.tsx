@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import ServiceCard from './components/ServiceCard';
 import {
   Truck,
@@ -11,6 +12,9 @@ import {
   Building,
   Warehouse,
 } from 'lucide-react';
+
+// ✅ LOCAL IMAGE IMPORT
+import frontBranding from '../../assets/images/FRONTBRANDING.png';
 
 const services = [
   {
@@ -136,33 +140,36 @@ const ServicesPage = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="p-8 md:p-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready for Stress Free Delivery?</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                Ready for Stress Free Delivery?
+              </h2>
               <p className="text-lg mb-6">
                 Book Dolu Logistics and ship with confidence. We handle your goods with care, deliver on time, and
                 charge fairly with clear communication from pickup to drop off.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="https://dammydx.github.io/SwiftHaul"
-                  className="px-6 py-3 bg-white text-primary-600 rounded-md font-medium hover:bg-gray-100 transition-colors"
+                <Link
+                  to="/request-pickup"
+                  className="px-8 py-3 bg-white text-primary-600 rounded-md font-medium hover:bg-gray-100 transition-colors"
                 >
                   Book a Pickup
-                </a>
-                <a
-                  href="https://dammydx.github.io/SwiftHaul/track"
-                  className="px-6 py-3 bg-accent-500 text-white rounded-md font-medium hover:bg-accent-600 transition-colors"
+                </Link>
+                <Link
+                  to="/track"
+                  className="px-8 py-3 bg-accent-500 text-white rounded-md font-medium hover:bg-accent-600 transition-colors"
                 >
-                  Track a Parcel
-                </a>
+                  Track Parcel
+                </Link>
               </div>
             </div>
 
-            <div className="hidden md:block">
+            {/* ✅ IMAGE NOW SHOWS ON MOBILE + DESKTOP */}
+            <div className="block">
               <img
-                src="https://images.pexels.com/photos/7363095/pexels-photo-7363095.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt="Dolu Logistics service"
-                className="h-full w-full object-cover"
+                src={frontBranding}
+                alt="Dolu Logistics branding"
+                className="h-64 md:h-full w-full object-cover"
               />
             </div>
           </div>

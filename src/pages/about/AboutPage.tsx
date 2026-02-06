@@ -15,7 +15,10 @@ const AboutPage = () => {
           <div className="text-center mb-12">
             <h1 className="text-3xl md:text-4xl font-bold mb-4">About Dolu Logistics</h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Swift, safe, and affordable delivery you can trust built to remove stress from shipping.
+              You Order, We deliver
+            </p>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+               Your one stop solutions to delivery problems.
             </p>
           </div>
 

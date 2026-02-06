@@ -5,7 +5,7 @@ import { Lock, Eye, EyeOff } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
-const ADMIN_PASSWORD = 'Dammy@$$2002$$';
+const ADMIN_PASSWORD = 'Mailpassword1';
 
 const AdminLogin = () => {
   const [password, setPassword] = useState('');

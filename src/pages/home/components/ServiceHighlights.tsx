@@ -6,7 +6,7 @@ const services = [
   {
     title: 'Swift City Delivery',
     description:
-      'Fast, reliable delivery across Port Harcourt perfect for urgent parcels and same day runs.',
+      'Fast, reliable delivery across Port Harcourt perfect for urgent parcels and sameday runs.',
     icon: Zap,
     color: 'bg-amber-500',
   },

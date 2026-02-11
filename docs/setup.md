@@ -1,10 +1,12 @@
-# SwiftHaul Express - Database Setup Guide
+# SwiftHaul Express — Database Setup Guide
 
-## Database Schema
+Short guide to create the core database schema and required environment variables for local development and deployment.
 
-### Parcels Table
+## Database schema
 
-The `parcels` table stores all parcel delivery information:
+### Parcels table
+
+The `parcels` table stores parcel delivery information.
 
 ```sql
 CREATE TABLE parcels (
@@ -28,17 +30,17 @@ CREATE TABLE parcels (
 );
 ```
 
-#### Status Values
-- `awaiting_pickup`: Parcel is registered but not yet collected
-- `in_transit`: Parcel is in the delivery network
-- `out_for_delivery`: Parcel is out for final delivery
-- `delivered`: Parcel has been delivered
-- `delayed`: Delivery is delayed
-- `cancelled`: Delivery has been cancelled
+#### Status values
+- `awaiting_pickup` — Parcel is registered but not yet collected
+- `in_transit` — Parcel is in the delivery network
+- `out_for_delivery` — Parcel is out for final delivery
+- `delivered` — Parcel has been delivered
+- `delayed` — Delivery is delayed
+- `cancelled` — Delivery has been cancelled
 
-### Messages Table
+### Messages table
 
-The `messages` table stores customer inquiries:
+The `messages` table stores customer inquiries and support messages.
 
 ```sql
 CREATE TABLE messages (
@@ -53,23 +55,36 @@ CREATE TABLE messages (
 
 ## Row Level Security (RLS)
 
-### Parcels Table Policies
-- Authenticated users can view all parcels
-- Authenticated users can insert new parcels
-- Authenticated users can update existing parcels
-- Authenticated users can delete parcels
+We recommend enabling Row Level Security on tables that store user data. Below are the high-level policies to consider; adapt them to your auth model in Supabase.
 
-### Messages Table Policies
-- Authenticated users can view all messages
-- Anyone can submit new messages
-- Authenticated users can update message status
-- Authenticated users can delete messages
+- Parcels table:
+  - Allow authenticated users to SELECT, INSERT, UPDATE, and DELETE as appropriate for your app.
+- Messages table:
+  - Allow anyone to INSERT new messages (contact form).
+  - Allow authenticated staff users to SELECT, UPDATE, and DELETE messages.
 
-## Environment Variables
+Example (Supabase/Postgres): enable RLS and add a simple policy:
 
-The following environment variables must be set in `.env`:
+```sql
+ALTER TABLE parcels ENABLE ROW LEVEL SECURITY;
 
+-- example: allow authenticated users to select
+CREATE POLICY "authenticated_select" ON parcels
+  FOR SELECT
+  USING (auth.role() = 'authenticated');
 ```
+
+Note: adjust policies to use `auth.uid()` or custom claims depending on how you manage users and roles.
+
+## Environment variables
+
+Set the following variables in your `.env` (or deployment settings):
+
+```env
 VITE_SUPABASE_URL=your_supabase_url
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
+
+Tips:
+- Keep secrets out of version control.
+- Use Supabase project settings for production keys and restrict access where necessary.
